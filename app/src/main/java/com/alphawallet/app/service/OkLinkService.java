@@ -9,6 +9,7 @@ import static com.alphawallet.ethereum.EthereumNetworkBase.FANTOM_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.KLAYTN_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.LINEA_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.MAINNET_ID;
+import static com.alphawallet.ethereum.EthereumNetworkBase.NBCOIN_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.OKX_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.OPTIMISTIC_MAIN_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.POLYGON_AMOY_ID;
@@ -57,6 +58,7 @@ public class OkLinkService
     private static final LongSparseArray<String> shortNames = new LongSparseArray<>()
     {
         {
+            put(NBCOIN_ID, "NBC");
             put(MAINNET_ID, "ETH");
             put(OKX_ID, "OKTC");
             put(POLYGON_AMOY_ID, "AMOY_TESTNET");

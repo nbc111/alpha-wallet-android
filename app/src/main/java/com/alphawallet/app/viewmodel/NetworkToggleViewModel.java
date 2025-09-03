@@ -1,5 +1,7 @@
 package com.alphawallet.app.viewmodel;
 
+import android.util.Log;
+
 import com.alphawallet.app.entity.NetworkInfo;
 import com.alphawallet.app.repository.EthereumNetworkRepository;
 import com.alphawallet.app.repository.EthereumNetworkRepositoryType;
@@ -36,6 +38,7 @@ public class NetworkToggleViewModel extends BaseViewModel
 
     public NetworkInfo[] getNetworkList()
     {
+        Log.e("TAG", "getNetworkList: 获取到的主网数量：" + networkRepository.getAvailableNetworkList().length);
         return networkRepository.getAvailableNetworkList();
     }
 
@@ -80,6 +83,7 @@ public class NetworkToggleViewModel extends BaseViewModel
         List<NetworkItem> networkList = new ArrayList<>();
         List<Long> filterIds = networkRepository.getSelectedFilters();
 
+        Log.e("TAG", "getNetworkList: 数量为：" + getNetworkList().length);
         for (NetworkInfo info : getNetworkList())
         {
             if (info != null && EthereumNetworkRepository.hasRealValue(info.chainId) == isMainNet)

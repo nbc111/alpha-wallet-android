@@ -41,6 +41,7 @@ import static com.alphawallet.ethereum.EthereumNetworkBase.MANTLE_TESTNET_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.MILKOMEDA_C1_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.MINT_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.MINT_SEPOLIA_TESTNET_ID;
+import static com.alphawallet.ethereum.EthereumNetworkBase.NBCOIN_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.OKX_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.OPTIMISTIC_MAIN_FALLBACK_URL;
 import static com.alphawallet.ethereum.EthereumNetworkBase.OPTIMISTIC_MAIN_ID;
@@ -55,6 +56,7 @@ import static com.alphawallet.ethereum.EthereumNetworkBase.SEPOLIA_TESTNET_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.SEPOLIA_TESTNET_RPC_URL;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.LongSparseArray;
 
 import com.alphawallet.app.C;
@@ -178,7 +180,7 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
     //Note: This list also determines the order of display for main net chains in the wallet.
     //If your wallet prioritises xDai for example, you may want to move the XDAI_ID to the front of this list,
     //Then xDai would appear as the first token at the top of the wallet
-    private static final List<Long> hasValue = new ArrayList<>(Arrays.asList(
+    private static final List<Long> hasValue = new ArrayList<>(Arrays.asList(NBCOIN_ID,
             MAINNET_ID, GNOSIS_ID, POLYGON_ID, ROOTSTOCK_MAINNET_ID, CLASSIC_ID, LINEA_ID, BASE_MAINNET_ID, MANTLE_MAINNET_ID, MINT_ID, BINANCE_MAIN_ID, AVALANCHE_ID,
             FANTOM_ID, OPTIMISTIC_MAIN_ID, CRONOS_MAIN_ID, ARBITRUM_MAIN_ID, PALM_ID, KLAYTN_ID, IOTEX_MAINNET_ID, AURORA_MAINNET_ID, MILKOMEDA_C1_ID, OKX_ID));
 
@@ -197,6 +199,9 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
 
     static
     {
+        CHAIN_CONFIG_RPC.put(NBCOIN_ID, new String[]{
+                "https://rpc.nbcex.com"
+        });
         CHAIN_CONFIG_RPC.put(MAINNET_ID, new String[]{
                 "https://rpc.payload.de",
                 "https://eth-mainnet.public.blastapi.io",
@@ -466,6 +471,10 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
     private static final LongSparseArray<NetworkInfo> builtinNetworkMap = new LongSparseArray<NetworkInfo>()
     {
         {
+            put(NBCOIN_ID, new NetworkInfo(C.NBC_NETWORK_NAME, C.NBC_SYMBOL,
+                    CHAIN_CONFIG_RPC.get(NBCOIN_ID),
+                    "https://www.nbblocks.cc/", NBCOIN_ID,
+                    "https://www.nbblocks.cc/api-docs?"));
             put(MAINNET_ID, new NetworkInfo(C.ETHEREUM_NETWORK_NAME, C.ETH_SYMBOL,
                     CHAIN_CONFIG_RPC.get(MAINNET_ID),
                     "https://cn.etherscan.com/tx/", MAINNET_ID,
@@ -641,6 +650,7 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
     private static final LongSparseArray<Integer> chainLogos = new LongSparseArray<Integer>()
     {
         {
+            put(NBCOIN_ID, R.mipmap.ic_launcher_round);
             put(MAINNET_ID, R.drawable.ic_token_eth);
             put(CLASSIC_ID, R.drawable.ic_icons_network_etc); //classic_logo
             put(GNOSIS_ID, R.drawable.ic_icons_network_gnosis);
@@ -687,6 +697,7 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
     private static final LongSparseArray<Integer> smallChainLogos = new LongSparseArray<Integer>()
     {
         {
+            put(NBCOIN_ID, R.mipmap.ic_launcher_round);
             put(MAINNET_ID, R.drawable.ic_icons_network_eth);
             put(CLASSIC_ID, R.drawable.ic_icons_network_etc);
             put(GNOSIS_ID, R.drawable.ic_icons_network_gnosis);
@@ -733,6 +744,7 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
     private static final LongSparseArray<Integer> chainColours = new LongSparseArray<Integer>()
     {
         {
+            put(NBCOIN_ID, R.color.mainnet);
             put(MAINNET_ID, R.color.mainnet);
             put(CLASSIC_ID, R.color.classic);
             put(GNOSIS_ID, R.color.xdai);
@@ -780,9 +792,9 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
     //Add it to this list here if so. Note that so far, all gas oracles follow the same format:
     //  <etherscanAPI from the above list> + GAS_API
     //If the gas oracle you're adding doesn't follow this spec then you'll have to change the getGasOracle method
-    private static final List<Long> hasGasOracleAPI = Arrays.asList(MAINNET_ID, POLYGON_ID, ARBITRUM_MAIN_ID, AVALANCHE_ID, BINANCE_MAIN_ID, CRONOS_MAIN_ID, GOERLI_ID,
+    private static final List<Long> hasGasOracleAPI = Arrays.asList(NBCOIN_ID, MAINNET_ID, POLYGON_ID, ARBITRUM_MAIN_ID, AVALANCHE_ID, BINANCE_MAIN_ID, CRONOS_MAIN_ID, GOERLI_ID,
             SEPOLIA_TESTNET_ID, FANTOM_ID, LINEA_ID, OPTIMISTIC_MAIN_ID, POLYGON_TEST_ID, POLYGON_AMOY_ID, BASE_MAINNET_ID, BASE_TESTNET_ID);
-    private static final List<Long> hasEtherscanGasOracleAPI = Arrays.asList(MAINNET_ID, BINANCE_MAIN_ID, POLYGON_ID);
+    private static final List<Long> hasEtherscanGasOracleAPI = Arrays.asList(NBCOIN_ID, MAINNET_ID, BINANCE_MAIN_ID, POLYGON_ID);
     private static final List<Long> hasBlockNativeGasOracleAPI = Arrays.asList(MAINNET_ID, POLYGON_ID);
     //These chains don't allow custom gas
     private static final List<Long> hasLockedGas = Arrays.asList(KLAYTN_ID, KLAYTN_BAOBAB_ID);
@@ -791,6 +803,7 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
     private static final LongSparseArray<BigInteger> blockGasLimit = new LongSparseArray<BigInteger>()
     {
         {
+//            put(NBCOIN_ID, BigInteger.valueOf(C.GAS_LIMIT_MAX));
             put(MAINNET_ID, BigInteger.valueOf(C.GAS_LIMIT_MAX));
             put(KLAYTN_ID, BigInteger.valueOf(C.GAS_LIMIT_MAX_KLAYTN));
             put(AURORA_MAINNET_ID, BigInteger.valueOf(C.GAS_LIMIT_MAX_AURORA));
@@ -1137,6 +1150,7 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
 
     EthereumNetworkBase(PreferenceRepositoryType preferenceRepository, NetworkInfo[] additionalNetworks, boolean useTestNets)
     {
+        Log.e("TAGaa", "EthereumNetworkBase: 网络数量：" + additionalNetworks.length + "  ");
         this.preferences = preferenceRepository;
         this.additionalNetworks = additionalNetworks;
         this.useTestNets = useTestNets;
@@ -1146,6 +1160,7 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
 
     private void addNetworks(NetworkInfo[] networks, List<NetworkInfo> result, boolean withValue)
     {
+        Log.e("TAG", "addNetworks: 网络数量：" + networks.length);
         for (NetworkInfo network : networks)
         {
             if (EthereumNetworkRepository.hasRealValue(network.chainId) == withValue
@@ -1399,7 +1414,7 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
 
     public static BigInteger getMaxGasLimit(long chainId)
     {
-        return blockGasLimit.get(chainId, blockGasLimit.get(MAINNET_ID));
+        return blockGasLimit.get(chainId, blockGasLimit.get(NBCOIN_ID));
     }
 
     public static String getNodeURLByNetworkId(long networkId)

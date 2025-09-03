@@ -17,6 +17,7 @@ import static com.alphawallet.ethereum.EthereumNetworkBase.LINEA_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.MAINNET_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.MANTLE_MAINNET_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.MILKOMEDA_C1_ID;
+import static com.alphawallet.ethereum.EthereumNetworkBase.NBCOIN_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.OKX_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.OPTIMISTIC_MAIN_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.POLYGON_ID;
@@ -725,6 +726,7 @@ public class TickerService
     // Update this list from here: https://api.coingecko.com/api/v3/asset_platforms
     public static final Map<Long, String> coinGeckoChainIdToAPIName = new HashMap<>()
     {{
+        put(NBCOIN_ID, "nbchain");
         put(MAINNET_ID, "ethereum");
         put(GNOSIS_ID, "xdai");
         put(BINANCE_MAIN_ID, "binance-smart-chain");
@@ -770,6 +772,7 @@ public class TickerService
     // If ticker is pegged against ethereum (L2's) then use 'ethereum' here.
     public static final Map<Long, String> chainPairs = new HashMap<>()
     {{
+        put(NBCOIN_ID, "nbchain");
         put(MAINNET_ID, "ethereum");
         put(CLASSIC_ID, "ethereum-classic");
         put(GNOSIS_ID, "xdai");

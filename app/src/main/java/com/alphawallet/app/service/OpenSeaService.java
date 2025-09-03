@@ -5,6 +5,7 @@ import static com.alphawallet.ethereum.EthereumNetworkBase.AVALANCHE_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.BINANCE_MAIN_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.KLAYTN_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.MAINNET_ID;
+import static com.alphawallet.ethereum.EthereumNetworkBase.NBCOIN_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.OPTIMISTIC_MAIN_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.POLYGON_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.POLYGON_TEST_ID;
@@ -56,6 +57,7 @@ public class OpenSeaService
     private final Map<Long, String> pageOffsets = new ConcurrentHashMap<>();
 
     private final static Map<Long, String> API_CHAIN_MAP = Map.of(
+            NBCOIN_ID, "nbc",
             MAINNET_ID, "ethereum",
             KLAYTN_ID, "klaytn",
             POLYGON_TEST_ID, "mumbai",

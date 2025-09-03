@@ -4,6 +4,7 @@ import static com.alphawallet.app.ui.AddCustomRPCNetworkActivity.CHAIN_ID;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -54,6 +55,7 @@ public class NetworkToggleActivity extends NetworkBaseActivity
     {
         List<NetworkItem> mainNetList = viewModel.getNetworkList(true);
         List<NetworkItem> testNetList = viewModel.getNetworkList(false);
+        Log.e("TAG", "setupFilterList: 主网数量：" + mainNetList.size());
 
         MultiSelectNetworkAdapter.Callback callback = new MultiSelectNetworkAdapter.Callback()
         {
@@ -110,6 +112,7 @@ public class NetworkToggleActivity extends NetworkBaseActivity
             }
         };
 
+        Log.e("TAG", "setupFilterList主网络: " + mainNetList.size());
         mainNetAdapter = new MultiSelectNetworkAdapter(mainNetList, callback);
         mainnetRecyclerView.setAdapter(mainNetAdapter);
 

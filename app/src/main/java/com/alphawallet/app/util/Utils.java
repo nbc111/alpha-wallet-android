@@ -5,6 +5,7 @@ import static com.alphawallet.ethereum.EthereumNetworkBase.BINANCE_MAIN_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.CLASSIC_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.GNOSIS_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.MAINNET_ID;
+import static com.alphawallet.ethereum.EthereumNetworkBase.NBCOIN_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.OPTIMISTIC_MAIN_ID;
 import static com.alphawallet.ethereum.EthereumNetworkBase.POLYGON_ID;
 
@@ -953,6 +954,7 @@ public class Utils
             put(OPTIMISTIC_MAIN_ID, "optimism");
             put(POLYGON_ID, "polygon");
             put(MAINNET_ID, "ethereum");
+            put(NBCOIN_ID, "nbchain");
         }
     };
 
