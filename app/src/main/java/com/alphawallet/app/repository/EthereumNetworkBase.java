@@ -650,7 +650,7 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
     private static final LongSparseArray<Integer> chainLogos = new LongSparseArray<Integer>()
     {
         {
-            put(NBCOIN_ID, R.mipmap.ic_launcher_round);
+            put(NBCOIN_ID, R.drawable.ic_token_nbc);
             put(MAINNET_ID, R.drawable.ic_token_eth);
             put(CLASSIC_ID, R.drawable.ic_icons_network_etc); //classic_logo
             put(GNOSIS_ID, R.drawable.ic_icons_network_gnosis);
@@ -697,7 +697,7 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
     private static final LongSparseArray<Integer> smallChainLogos = new LongSparseArray<Integer>()
     {
         {
-            put(NBCOIN_ID, R.mipmap.ic_launcher_round);
+            put(NBCOIN_ID, R.drawable.ic_token_nbc);
             put(MAINNET_ID, R.drawable.ic_icons_network_eth);
             put(CLASSIC_ID, R.drawable.ic_icons_network_etc);
             put(GNOSIS_ID, R.drawable.ic_icons_network_gnosis);

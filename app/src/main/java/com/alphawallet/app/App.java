@@ -3,8 +3,6 @@ package com.alphawallet.app;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
 
-import static dagger.hilt.android.internal.Contexts.getApplication;
-
 import android.app.Activity;
 import android.app.Application;
 import android.app.UiModeManager;
@@ -16,7 +14,6 @@ import androidx.preference.PreferenceManager;
 
 import com.alphawallet.app.util.TimberInit;
 import com.alphawallet.app.walletconnect.AWWalletConnectClient;
-import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.upgrade.bean.UpgradeConfig;
 import com.tencent.upgrade.core.UpgradeManager;
 
