@@ -7,17 +7,29 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.UiModeManager;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
 
+import com.alphawallet.app.util.ShiplyLogger;
 import com.alphawallet.app.util.TimberInit;
 import com.alphawallet.app.walletconnect.AWWalletConnectClient;
+import com.tencent.rdelivery.DependencyInjector;
+import com.tencent.rdelivery.RDelivery;
+import com.tencent.rdelivery.RDeliverySetting;
+import com.tencent.rdelivery.dependencyimpl.HandlerTask;
+import com.tencent.rdelivery.dependencyimpl.HttpsURLConnectionNetwork;
+import com.tencent.rdelivery.dependencyimpl.MmkvStorage;
+import com.tencent.rdelivery.dependencyimpl.SystemLog;
 import com.tencent.upgrade.bean.UpgradeConfig;
+import com.tencent.upgrade.core.DefaultUpgradeStrategyRequestCallback;
 import com.tencent.upgrade.core.UpgradeManager;
 
 import java.util.EmptyStackException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 import javax.inject.Inject;
@@ -140,9 +152,33 @@ public class App extends Application
         });
 
 //        CrashReport.initCrashReport(getApplicationContext(), "b2f36fce1a", false);
+
+
+        initShiply();
+        autoDetectUpgrade();
+    }
+
+    private void initShiply() {
+        /*UpgradeConfig.Builder builder = new UpgradeConfig.Builder();
+        UpgradeConfig config = builder.appId("4df21e2e14").appKey("6d1e874d-e771-4b97-8eda-58084f9b9bb7").build();
+        UpgradeManager.getInstance().init(this, config);*/
+
+        Map<String, String> map = new HashMap<>();
+        map.put("UserGender", "Male");
         UpgradeConfig.Builder builder = new UpgradeConfig.Builder();
-        UpgradeConfig config = builder.appId("b2f36fce1a").appKey("aa4db2ee-46d1-468a-b33b-80da5a54cf5b").build();
-        UpgradeManager.getInstance().init(this, config);
+        builder.appId("4df21e2e14") // 项目 appid
+                .appKey("6d1e874d-e771-4b97-8eda-58084f9b9bb7") // 项目 appkey
+                .systemVersion(String.valueOf(Build.VERSION.SDK_INT))   // 用户手机系统版本，用于匹配shiply前端创建任务时设置的系统版本下发条件
+                .customParams(map)                                      // 自定义属性键值对，用于匹配shiply前端创建任务时设置的自定义下发条件
+                .cacheExpireTime(1000 * 60 * 60 * 6)                  // 灰度策略的缓存时长（ms），如果不设置，默认缓存时长为1天
+                .internalInitMMKVForRDelivery(true)            // 是否由sdk内部初始化mmkv(调用MMKV.initialize()),业务方如果已经初始化过mmkv可以设置为false
+                .userId("0287774636035272")                          // 用户Id,用于匹配shiply前端创建的任务中的体验名单以及下发条件中的用户号码包
+                .customLogger(new ShiplyLogger());                      // 日志实现接口，建议对接到业务方的日志接口，方便排查问题
+        UpgradeManager.getInstance().init(this, builder.build());
+    }
+
+    private void autoDetectUpgrade() {
+        UpgradeManager.getInstance().checkUpgrade(false, null, new DefaultUpgradeStrategyRequestCallback());
     }
 
     @Override

@@ -84,8 +84,6 @@ import com.alphawallet.token.entity.Signable;
 import com.github.florent37.tutoshowcase.TutoShowcase;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
-import com.tencent.upgrade.core.DefaultUpgradeStrategyRequestCallback;
-import com.tencent.upgrade.core.UpgradeManager;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 
@@ -232,8 +230,7 @@ public class HomeActivity extends BaseNavigationActivity implements View.OnClick
         viewModel.identify();
         viewModel.setWalletStartup();
         viewModel.setCurrencyAndLocale(this);
-//        viewModel.tryToShowWhatsNewDialog(this);
-        UpgradeManager.getInstance().checkUpgrade(false, null, new DefaultUpgradeStrategyRequestCallback());
+        viewModel.tryToShowWhatsNewDialog(this);
         setContentView(R.layout.activity_home);
 
         initViews();

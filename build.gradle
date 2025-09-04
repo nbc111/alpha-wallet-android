@@ -12,7 +12,7 @@ buildscript {
         // don't do that. add that repository to app/build.gradle
 
         maven { url "https://maven.cnb.cool/tencent-tds/shiply-public/-/packages/" }
-        maven { url "https://tencent-tds-maven.pkg.coding.net/repository/shiply/repo" }
+//        maven { url "https://tencent-tds-maven.pkg.coding.net/repository/shiply/repo" }
     }
     dependencies {
         classpath libs.gradle
