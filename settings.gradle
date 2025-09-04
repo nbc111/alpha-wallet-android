@@ -9,6 +9,8 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        maven { url "https://maven.cnb.cool/tencent-tds/shiply-public/-/packages/" }
+        maven { url "https://tencent-tds-maven.pkg.coding.net/repository/shiply/repo" }
     }
 }
 dependencyResolutionManagement {
@@ -28,6 +30,8 @@ dependencyResolutionManagement {
             url "https://plugins.gradle.org/m2/"
         }
         maven { url 'https://repo.spring.io/milestone' }
+        maven { url "https://maven.cnb.cool/tencent-tds/shiply-public/-/packages/" }
+        maven { url "https://tencent-tds-maven.pkg.coding.net/repository/shiply/repo" }
     }
 }
 

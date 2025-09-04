@@ -10,6 +10,9 @@ buildscript {
         // WARNING WARNING WARNING
         // you are about to add here a repository which provides some library for the Android app
         // don't do that. add that repository to app/build.gradle
+
+        maven { url "https://maven.cnb.cool/tencent-tds/shiply-public/-/packages/" }
+        maven { url "https://tencent-tds-maven.pkg.coding.net/repository/shiply/repo" }
     }
     dependencies {
         classpath libs.gradle

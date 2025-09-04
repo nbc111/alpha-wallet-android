@@ -94,3 +94,6 @@
 -repackageclasses
 #-dontobfuscate
 #-printconfiguration ../full-r8-config.txt
+
+#-dontwarn com.tencent.bugly.**
+#-keep public class com.tencent.bugly.**{*;}
