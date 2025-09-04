@@ -21,7 +21,7 @@ public abstract class C {
     public static final int ADDED_TOKEN_RETURN = 9;
     public static final int STANDARD_POPUP_INACTIVITY_DISMISS = 15*1000; //Standard dismiss after 15 seconds
 
-    public static final String NBC_NETWORK_NAME = "NBCoin (NBC)";
+    public static final String NBC_NETWORK_NAME = "NBCoin";
     public static final String ETHEREUM_NETWORK_NAME = "Ethereum";
     public static final String CLASSIC_NETWORK_NAME = "Ethereum Classic";
     public static final String XDAI_NETWORK_NAME = "Gnosis";

@@ -1160,7 +1160,7 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
 
     private void addNetworks(NetworkInfo[] networks, List<NetworkInfo> result, boolean withValue)
     {
-        Log.e("TAG", "addNetworks: 网络数量：" + networks.length);
+//        Log.e("TAG", "addNetworks: 网络数量：" + networks.length);
         for (NetworkInfo network : networks)
         {
             if (EthereumNetworkRepository.hasRealValue(network.chainId) == withValue
@@ -1272,6 +1272,7 @@ public abstract class EthereumNetworkBase implements EthereumNetworkRepositoryTy
     {
         String filterList = preferences.getNetworkFilterList();
         List<Long> storedIds = Utils.longListToArray(filterList);
+        Log.e("TAG", "getSelectedFilters: 过滤结果：" + filterList + "  " + storedIds.toString());
         List<Long> selectedIds = new ArrayList<>();
 
         for (Long networkId : storedIds)

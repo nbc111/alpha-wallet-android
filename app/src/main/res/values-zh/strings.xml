@@ -736,6 +736,7 @@
     <string name="alerts_will_appear_here">通知将会出现在这里</string>
     <string name="token_text">代币</string>
     <string name="buy_eth">购买以太币</string>
+    <string name="buy_nbc">购买NBC</string>
     <string name="reload_token_data_desc">重置所有缓存的代币数据(如记录的余额等)。AlphaWallet 将重新加载您钱包的当前状态。不会影响密钥或资产。</string>
     <string name="text_speedup_note">请注意，加速此交易不能保证原始交易会被加速。如果您的尝试成功，您将被收取上述矿工费用。</string>
     <string name="text_cancel_note">请注意，此交易不能保证您的原始交易会被取消。如果您的尝试成功，您将被收取上述矿工费用。</string>
@@ -809,6 +810,7 @@
     <string name="governance_header">治理</string>
     <string name="collectibles_header">NFT</string>
     <string name="whats_new">什么是新的？</string>
+    <string name="update_content">更新内容</string>
     <string name="price_alert_indicator_below">低于</string>
     <string name="price_alert_indicator_above">高于</string>
     <string name="add_new_price_alert">添加新价格通知</string>

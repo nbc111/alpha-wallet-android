@@ -7,9 +7,9 @@ public enum TokenFilter
 {
     ALL,
     ASSETS,
-    COLLECTIBLES,
+    COLLECTIBLES,//收藏品
     DEFI,
-    GOVERNANCE,
-    ATTESTATIONS,
+    GOVERNANCE,//治理
+    ATTESTATIONS,//证书
     NO_FILTER
 }

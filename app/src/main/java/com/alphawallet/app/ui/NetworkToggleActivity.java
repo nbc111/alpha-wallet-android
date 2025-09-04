@@ -55,7 +55,13 @@ public class NetworkToggleActivity extends NetworkBaseActivity
     {
         List<NetworkItem> mainNetList = viewModel.getNetworkList(true);
         List<NetworkItem> testNetList = viewModel.getNetworkList(false);
-        Log.e("TAG", "setupFilterList: 主网数量：" + mainNetList.size());
+        Log.e("TAG", "setupFilterList: 主网数量=====================：" + mainNetList.size());
+        for (int i = 0; i < mainNetList.size(); i++) {
+            if (mainNetList.get(i).isSelected()) {
+                Log.e("TAG", "setupFilterList: 默认被选中的币种为：" + mainNetList.get(i).getName());
+            }
+        }
+        Log.e("TAG", "setupFilterList: 测试网数量=====================：" + testNetList.size());
 
         MultiSelectNetworkAdapter.Callback callback = new MultiSelectNetworkAdapter.Callback()
         {

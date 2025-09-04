@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -633,6 +634,7 @@ public class HomeViewModel extends BaseViewModel
                 .getPackageInfo(context.getPackageName(), 0);
 
             int versionCode = packageInfo.versionCode;
+            Log.e("TAG", "tryToShowWhatsNewDialog: 当前版本号：" + preferenceRepository.getLastVersionCode(versionCode) + "  " + versionCode);
             if (preferenceRepository.getLastVersionCode(versionCode) < versionCode)
             {
                 Request request = getRequest();
@@ -640,8 +642,10 @@ public class HomeViewModel extends BaseViewModel
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe((releases) -> {
+                            Log.e("TAG", "tryToShowWhatsNewDialog: 是否为空;" + releases.isEmpty());
                         if (!releases.isEmpty())
                         {
+                            Log.e("TAG", "tryToShowWhatsNewDialog: " + releases.toString());
                             doShowWhatsNewDialog(context, releases);
                             preferenceRepository.setLastVersionCode(versionCode);
                         }

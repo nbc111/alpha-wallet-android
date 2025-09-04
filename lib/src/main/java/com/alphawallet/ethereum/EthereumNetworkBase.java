@@ -106,7 +106,7 @@ public abstract class EthereumNetworkBase
     static Map<Long, NetworkInfo> networkMap = new LinkedHashMap<Long, NetworkInfo>()
     {
         {
-            put(NBCOIN_ID, new NetworkInfo("NBCoin (NBC)", "NBC", NBCOIN_RPC_URL, "https://www.nbblocks.cc/",
+            put(NBCOIN_ID, new NetworkInfo("NBCoin", "NBC", NBCOIN_RPC_URL, "https://www.nbblocks.cc/",
                     NBCOIN_ID, false));
             put(MAINNET_ID, new NetworkInfo("Ethereum", "ETH", MAINNET_RPC_URL, "https://etherscan.io/tx/",
                     MAINNET_ID, false));

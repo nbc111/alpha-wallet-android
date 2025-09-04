@@ -88,6 +88,7 @@ public class NetworkToggleViewModel extends BaseViewModel
         {
             if (info != null && EthereumNetworkRepository.hasRealValue(info.chainId) == isMainNet)
             {
+                Log.e("TAG", "getNetworkList: 主网的名称信息：" + info.chainId + "  | " + info.name + "  ");
                 networkList.add(new NetworkItem(info.name, info.chainId, filterIds.contains(info.chainId)));
             }
         }

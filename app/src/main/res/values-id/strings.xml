@@ -748,6 +748,7 @@
     <string name="alerts_will_appear_here">Peringatan akan muncul di sini</string>
     <string name="token_text">Token</string>
     <string name="buy_eth">Beli ETH</string>
+    <string name="buy_nbc">Beli NBC</string>
     <string name="reload_token_data_desc">Setel ulang semua data token yang terlampir (misalnya saldo yang tercatat, dll). AlphaWallet akan memuat ulang status dompet Anda saat ini. Tidak mempengaruhi kunci atau aset.</string>
 
     <string name="title_activity_add_custom_rpcnetwork">Tambahkan Jaringan RPC Khusus</string>
@@ -826,6 +827,7 @@
     <string name="governance_header">Tata Kelola Pemerintahan</string>
     <string name="collectibles_header">Barang Koleksi</string>
     <string name="whats_new">Apa yang baru?</string>
+    <string name="update_content">Konten pembaruan</string>
     <string name="price_alert_indicator_below">Di bawah</string>
     <string name="price_alert_indicator_above">Di atas</string>
     <string name="add_new_price_alert">Tambahkan Peringatan Harga Baru</string>

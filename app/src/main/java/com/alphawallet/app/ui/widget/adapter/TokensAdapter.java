@@ -1,6 +1,7 @@
 package com.alphawallet.app.ui.widget.adapter;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -145,7 +146,7 @@ public class TokensAdapter extends RecyclerView.Adapter<BinderViewHolder>
         BinderViewHolder<?> holder;
         switch (viewType)
         {
-            case TokenHolder.VIEW_TYPE:
+            case TokenHolder.VIEW_TYPE://币种名称
                 TokenHolder tokenHolder = new TokenHolder(parent, assetService, tokensService);
                 tokenHolder.setOnTokenClickListener(tokensAdapterCallback);
                 holder = tokenHolder;
@@ -157,17 +158,17 @@ public class TokensAdapter extends RecyclerView.Adapter<BinderViewHolder>
                 holder = tokenGridHolder;
                 break;
 
-            case ManageTokensHolder.VIEW_TYPE:
+            case ManageTokensHolder.VIEW_TYPE://购买按钮
                 ManageTokensHolder manageTokensHolder = new ManageTokensHolder(R.layout.layout_manage_tokens_with_buy, parent);
                 manageTokensHolder.setOnTokenClickListener(tokensAdapterCallback);
                 holder = manageTokensHolder;
                 break;
 
-            case HeaderHolder.VIEW_TYPE:
+            case HeaderHolder.VIEW_TYPE://标题“资产”
                 holder = new HeaderHolder(R.layout.layout_tokens_header, parent);
                 break;
 
-            case SearchTokensHolder.VIEW_TYPE:
+            case SearchTokensHolder.VIEW_TYPE://搜索
                 holder = new SearchTokensHolder(R.layout.layout_manage_token_search, parent, tokensAdapterCallback);
                 break;
 
@@ -183,7 +184,7 @@ public class TokensAdapter extends RecyclerView.Adapter<BinderViewHolder>
                 holder = new AssetInstanceScriptHolder(R.layout.item_ticket, parent, null, assetService, ViewType.VIEW);
                 break;
 
-            case ChainNameHeaderHolder.VIEW_TYPE:
+            case ChainNameHeaderHolder.VIEW_TYPE://链名称
                 holder = new ChainNameHeaderHolder(R.layout.item_chainname_header, parent);
                 break;
 
@@ -301,13 +302,14 @@ public class TokensAdapter extends RecyclerView.Adapter<BinderViewHolder>
             else
             {
                 SortedItem<?> headerItem = new HeaderItem(token.group);
-                items.add(tsi);
                 items.add(headerItem);
+                items.add(tsi);
 
                 SortedItem<?> chainItem = new ChainItem(token.getChain(), token.group);
                 if (doesNotExist(chainItem))
                 {
-                    items.add(chainItem);
+                    Log.e(TAG, "updateToken: ******************" + chainItem.viewType);
+                    items.add(chainItem);//链名称类型
                 }
             }
         }
