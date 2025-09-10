@@ -11,6 +11,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.graphics.Canvas;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -540,14 +541,10 @@ public class WalletFragment extends BaseFragment implements
     {
         final BottomSheetDialog buyEthDialog = new BottomSheetDialog(getActivity());
         BuyEthOptionsView buyEthOptionsView = new BuyEthOptionsView(getActivity());
-        buyEthOptionsView.setOnBuyWithRampListener(v -> {
-            Intent intent = viewModel.getBuyIntent(getCurrentWallet().address);
-            ((HomeActivity) getActivity()).onActivityResult(C.TOKEN_SEND_ACTIVITY, RESULT_OK, intent);
-            viewModel.track(Analytics.Action.BUY_WITH_RAMP);
-            buyEthDialog.dismiss();
-        });
         buyEthOptionsView.setOnBuyWithCoinbasePayListener(v -> {
             viewModel.showBuyEthOptions(getActivity());
+            viewModel.track(Analytics.Action.BUY_WITH_RAMP);
+            buyEthDialog.dismiss();
         });
         buyEthOptionsView.setDismissInterface(() -> {
             if (buyEthDialog != null && buyEthDialog.isShowing())

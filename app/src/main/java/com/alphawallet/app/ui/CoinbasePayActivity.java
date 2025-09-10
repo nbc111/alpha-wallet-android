@@ -1,11 +1,13 @@
 package com.alphawallet.app.ui;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.net.Uri;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -68,30 +70,19 @@ public class CoinbasePayActivity extends BaseActivity
 
     private void onDefaultWallet(Wallet wallet)
     {
-        DestinationWallet.Type type;
-        List<String> list = new ArrayList<>();
-        String asset = getIntent().getStringExtra("asset");
-        if (!TextUtils.isEmpty(asset))
-        {
-            type = DestinationWallet.Type.ASSETS;
-            list.add(asset);
-        }
-        else
-        {
-            type = DestinationWallet.Type.BLOCKCHAINS;
-            String blockchain = getIntent().getStringExtra("blockchain");
-            list.add(blockchain);
-        }
-
-        String uri = viewModel.getUri(type, wallet.address, list);
+        String uri = viewModel.getUri(null, wallet.address, null);
         if (TextUtils.isEmpty(uri))
         {
-            Toast.makeText(this, "Missing Coinbase Pay App ID.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Unable to open NBCEX", Toast.LENGTH_LONG).show();
             finish();
         }
         else
         {
-            webView.loadUrl(uri);
+            // Open in external browser instead of WebView
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(uri));
+            startActivity(intent);
+            finish(); // Close this activity after launching browser
         }
     }
 

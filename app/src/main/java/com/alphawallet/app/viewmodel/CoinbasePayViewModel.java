@@ -57,6 +57,7 @@ public class CoinbasePayViewModel extends BaseViewModel
 
     public String getUri(DestinationWallet.Type type, String address, List<String> list)
     {
-        return coinbasePayRepository.getUri(type, address, list);
+        // Return the NBCEX URL regardless of parameters
+        return com.alphawallet.app.repository.NbcexRepository.getUri();
     }
 }

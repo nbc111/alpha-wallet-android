@@ -13,11 +13,6 @@
         style="@style/Aw.Component.ActionItem"
         android:text="@string/buy_with_coinbase_pay" />
 
-    <TextView
-        android:id="@+id/buy_with_ramp"
-        style="@style/Aw.Component.ActionItem"
-        android:text="@string/buy_with_ramp" />
-
 </LinearLayout>
 
 

@@ -906,9 +906,9 @@
     <string name="label_provider">提供者</string>
     <string name="delete_empty">删除空白</string>
     <string name="delete_all">删除全部</string>
-    <string name="buy_with_coinbase_pay">使用 Coinbase Pay 购买</string>
-    <string name="buy_with_ramp">使用 Ramp 购买</string>
-    <string name="title_buy_with_coinbase_pay">使用 Coinbase Pay 购买</string>
+    <string name="buy_with_coinbase_pay">使用nbcex购买</string>
+    <string name="buy_with_ramp">使用nbcex购买</string>
+    <string name="title_buy_with_coinbase_pay">使用nbcex购买</string>
     <string name="key_status">密钥状态</string>
     <string name="fix_key_state">修复密钥状态</string>
     <string name="run_key_diagnostic">运行密钥诊断</string>

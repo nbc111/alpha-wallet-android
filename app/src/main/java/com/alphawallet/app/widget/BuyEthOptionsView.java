@@ -17,7 +17,6 @@ import com.alphawallet.app.entity.DialogDismissInterface;
 public class BuyEthOptionsView extends FrameLayout implements View.OnClickListener
 {
     private OnClickListener onBuyWithCoinbasePayListener;
-    private OnClickListener onBuyWithRampListener;
     private DialogDismissInterface dismissInterface;
     private final Handler handler = new Handler(Looper.getMainLooper());
 
@@ -36,7 +35,6 @@ public class BuyEthOptionsView extends FrameLayout implements View.OnClickListen
     {
         LayoutInflater.from(getContext()).inflate(layoutId, this, true);
         findViewById(R.id.buy_with_coinbase_pay).setOnClickListener(this);
-        findViewById(R.id.buy_with_ramp).setOnClickListener(this);
 
         //close after 30 seconds of inactivity
         handler.postDelayed(closePopup, C.STANDARD_POPUP_INACTIVITY_DISMISS);
@@ -55,13 +53,6 @@ public class BuyEthOptionsView extends FrameLayout implements View.OnClickListen
                 onBuyWithCoinbasePayListener.onClick(view);
             }
         }
-        else if (view.getId() == R.id.buy_with_ramp)
-        {
-            if (onBuyWithRampListener != null)
-            {
-                onBuyWithRampListener.onClick(view);
-            }
-        }
     }
 
     public void setOnBuyWithCoinbasePayListener(OnClickListener onClickListener)
@@ -69,10 +60,7 @@ public class BuyEthOptionsView extends FrameLayout implements View.OnClickListen
         this.onBuyWithCoinbasePayListener = onClickListener;
     }
 
-    public void setOnBuyWithRampListener(OnClickListener onClickListener)
-    {
-        this.onBuyWithRampListener = onClickListener;
-    }
+    // Ramp listener removed
 
     public void setDismissInterface(DialogDismissInterface dismissInterface)
     {

@@ -11,6 +11,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.util.Pair;
@@ -321,7 +322,10 @@ public class WalletViewModel extends BaseViewModel
 
     public void showBuyEthOptions(Activity activity)
     {
-        coinbasePayRouter.buyFromSelectedChain(activity, CoinbasePayRepository.Blockchains.ETHEREUM);
+        String nbcexUrl = com.alphawallet.app.repository.NbcexRepository.getUri();
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(nbcexUrl));
+        activity.startActivity(intent);
     }
 
     public void showMyAddress(Activity context)
