@@ -47,6 +47,7 @@ import com.alphawallet.app.util.LocaleUtils;
 import com.alphawallet.app.util.UpdateUtils;
 import com.alphawallet.app.util.Utils;
 import com.alphawallet.app.viewmodel.NewSettingsViewModel;
+import com.alphawallet.app.widget.AWalletAlertDialog;
 import com.alphawallet.app.widget.NotificationView;
 import com.alphawallet.app.widget.SettingsItemView;
 import com.google.android.material.card.MaterialCardView;
@@ -282,11 +283,7 @@ public class NewSettingsFragment extends BaseFragment
                 new SettingsItemView.Builder(getContext())
                         .withIcon(R.drawable.ic_price_up)
                         .withTitle(R.string.settings_otc)
-                        .withListener(() -> {
-                            String url = getString(R.string.settings_otc_url);
-                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                            startActivity(intent);
-                        })
+                        .withListener(this::onOtcSettingClicked)
                         .build();                
 
         showSeedPhrase = new SettingsItemView.Builder(getContext())
@@ -666,6 +663,23 @@ public class NewSettingsFragment extends BaseFragment
     {
         Intent intent = new Intent(getActivity(), WalletConnectSessionActivity.class);
         startActivity(intent);
+    }
+    
+    private void onOtcSettingClicked()
+    {
+        // 显示VPN提示对话框
+        AWalletAlertDialog dialog = new AWalletAlertDialog(getActivity());
+        dialog.setTitle(R.string.vpn_required_message);
+        dialog.setIcon(AWalletAlertDialog.WARNING);
+        dialog.setButtonText(R.string.confirm);
+        dialog.setButtonListener(v -> {
+            dialog.dismiss();
+            String nbcexUrl = com.alphawallet.app.repository.NbcexRepository.getUri();
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(nbcexUrl));
+            startActivity(intent);
+        });
+        dialog.show();
     }
 
     private void checkPendingUpdate(View view, boolean isFromPlayStore, View.OnClickListener listener)

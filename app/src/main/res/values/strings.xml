@@ -1081,4 +1081,6 @@
     <string name="i_accept">I accept the risk</string>
     <string name="settings_otc">OTC</string>
     <string name="settings_otc_url">https://checkout.banxa.com/</string>
+    <string name="vpn_required_message">Overseas VPN Required</string>
+    <string name="confirm">OK</string>
 </resources>

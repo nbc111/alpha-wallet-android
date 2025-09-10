@@ -1005,4 +1005,6 @@
     <string name="i_accept">我接受风险</string>
     <string name="settings_otc">法币兑换入口</string>
     <string name="settings_otc_description">法币兑换入口</string>
+    <string name="vpn_required_message">需要海外VPN</string>
+    <string name="confirm">确定</string>
 </resources>
